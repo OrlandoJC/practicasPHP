@@ -56,7 +56,7 @@ $list[] = array(
 //change status for show the complete the works complete
 $status = 'all';//complete, all none
 $field = 'complete';//order of fields
-
+$action = 'sort';
 
 if($status != 'complete' && $status != 'all') return ;
 //array order
@@ -74,17 +74,30 @@ if($status == 'all'){
 /*$order2 = [1, 4];
 var_dump($order2);
 var_dump($order);*/
-
-if($field){
-    $sort= array();
-    foreach ($order as $id ) {
-        $sort[$id] = $list[$id][$field];
-        // echo "sort[".$id."] = [".$list[$id][$field];
-       
-    }
-    asort($sort);
-    $order = array_keys($sort);
+echo strtotime('07/30/2016');
+switch ($action) {
+    case 'sort':
+       if($field){
+            $sort= array();
+            foreach ($order as $id ) {
+                $sort[$id] = $list[$id][$field];
+                // echo "sort[".$id."] = [".$list[$id][$field];
+            }
+            asort($sort);
+            $order = array_keys($sort);
+        }
+        break;
+     case 'week':
+        foreach ($order as $key) {
+            if(strtotime($list[$key]['due'])> strtotime('+1 week')) {
+                // echo implode($order[$key]);
+                unset($order[$key]);
+            
+            }  
+        }
+        break;
 }
+    
 
 //show the table
 
