@@ -1,4 +1,6 @@
 <?php
+
+//array to do works
 $list = array();
 $list[] = array(
     'title' => 'Laundry',
@@ -51,14 +53,40 @@ $list[] = array(
 
 
 
+//change status for show the complete the works complete
+$status = 'all';//complete, all none
+$field = 'complete';//order of fields
 
 
-
-
+if($status != 'complete' && $status != 'all') return ;
+//array order
 $order = array();
-foreach ($list as $key => $item) {
-    echo $key . '=' . $item['title'] . "<br />\n";
+
+if($status == 'all'){
+    $order = array_keys($list);
+}else{
+    foreach ($list as $key => $item) {
+        if($item['complete'] == $status){
+            $order[] =  $key;
+        }
+    }  
 }
+/*$order2 = [1, 4];
+var_dump($order2);
+var_dump($order);*/
+
+if($field){
+    $sort= array();
+    foreach ($order as $id ) {
+        $sort[$id] = $list[$id][$field];
+        // echo "sort[".$id."] = [".$list[$id][$field];
+       
+    }
+    asort($sort);
+    $order = array_keys($sort);
+}
+
+//show the table
 
 echo '<table>';
 echo '<tr>';
@@ -67,13 +95,13 @@ echo '<th>Priority</th>';
 echo '<th>Due Date</th>';
 echo '<th>Complete</th>';
 echo '</tr>';
-foreach ($list as $item) {
+foreach ($order as $id) {
     echo '<tr>';
-    echo '<td>' . $item['title'] . "</td>\n";
-    echo '<td>' . $item['priority'] . "</td>\n";
-    echo '<td>' . $item['due'] . "</td>\n";
+    echo '<td>' . $list[$id]['title'] . "</td>\n";
+    echo '<td>' . $list[$id]['priority'] . "</td>\n";
+    echo '<td>' . $list[$id]['due'] . "</td>\n";
     echo '<td>';
-    if ($item['complete']) {
+    if ($list[$id]['complete']) {
         echo 'Yes';
     } else {
         echo 'No';
