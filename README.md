@@ -33,7 +33,7 @@ PHP (acrónimo recursivo de PHP: **Hypertext Preprocessor**) es un lenguaje de c
 PHP Básico - Instalación
 -------------
 
-Para ejecutar php como vimos, necesitamos un servidor en donde estara instalado el interprete de php para que pueda ejecutar el codigo que nosotros escribamos, sin embargo podemos instalar un servidor local en nuestras computadoras 
+Para ejecutar php como vimos, necesitamos un servidor en donde estará instalado el interprete de php para que pueda ejecutar el código que nosotros escribamos,.Como habremos notado hay un conjunto de tecnologías que trabajan juntas que son: el servidor, el interprete(php), la base de datos. Para ello podemos instalar un bundle o un paquete que nos permite instar tales tecnologías a la vez y poder empezar a trabajar inmediatamente.
 ####XAMPP
 xammp es un paquete de instalación un gestor de base de datos **MySQL**, servidor **apache**, el interprete **PHP** que nos permite hacer pruebas de manera local.
 
@@ -43,3 +43,30 @@ xammp es un paquete de instalación un gestor de base de datos **MySQL**, servid
 
 
 ----------
+
+
+#### <i class="icon-file"></i> Primera pagina PHP
+
+Para hacer nuestra primera pagina php debemos tener conocimientos basicos de html, pues al final de cuentas esto es lo que nuestro cliente(browser) recibira.Para ello nos situamos en la raiz de nuestra computadora **windows** en C:// y a continuacion nos colocamos en xampp/htdocs.
+
+
+#### <i class="icon-pencil"></i> Crear carpeta
+
+Dentro de la caprta htdocs podemos ver el los archivos por defecto del xammp.Podemos guardarlo en una carpeta que creemos
+
+
+#### <i class="icon-folder" >Crear documento php</i>
+Una vez dentro en htdocs creamos una carpta practicaPHP y dentro creamos un archivo la extension index.php que contendra lo siguiente:
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>Document</title>
+    </head>
+    <body>
+        <?php
+            echo "hola mundo";
+        ?>
+    </body>
+    </html>
+Posteriormente entramos a localhost(el servidor debe estar corriendo) y entramos a localhost:80/nombre_carpeta/index.php
